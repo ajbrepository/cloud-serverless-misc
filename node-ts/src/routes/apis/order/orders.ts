@@ -1,8 +1,9 @@
 import express = require("express");
 import { Request, Response } from "express";
-
+import { DataService } from "../../../services/DataServices";
 const router = express.Router();
-
+let service = new DataService();
+//DataService.mongoSetup();
 router.get("/:city", (req: Request, res: Response) => {
   const city: string = req.params.city;
 
@@ -43,4 +44,9 @@ router.get("/:city", (req: Request, res: Response) => {
   }
 });
 
+router.post("/create", async (req: Request, res: Response) => {
+  //let resultNotFound: boolean = false;
+  let result = await service.createOrder(req.body);
+  return res.json(result);
+});
 export default router;

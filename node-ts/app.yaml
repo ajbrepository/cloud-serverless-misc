@@ -1,4 +1,6 @@
 # [START app_yaml]
 runtime: nodejs14
 service: orderscreate
+env_variables:
+  MONGO_URL: "myapp.settings"
 # [END app_yaml]
